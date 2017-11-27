@@ -1,0 +1,74 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
+android {
+
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.onetime.platform"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [
+                GETUI_APP_ID    : "rQ3Iz7Sp5J9ftXcgRJfL8",
+                GETUI_APP_KEY   : "rMVkqsvm4S9MMd8ppncv79",
+                GETUI_APP_SECRET: "iZGt1o1pUc8jihjOLckwb4"
+        ]
+
+//        ndk {
+//            abiFilters "armeabi", "armeabi-v7a", "x86_64"
+//        }
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.0.0-beta1'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    //butterKnife配置
+    compile 'com.jakewharton:butterknife:8.7.0'
+    compile 'com.tencent.bugly:crashreport:latest.release'
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
+    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    //友盟统计配置
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    //leackCanary检测内存（debug）
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    //leackCanary检测内存（正式版）
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    //leackCanary检测内存（测试版）
+    compile 'com.getui:sdk:2.11.1.0'
+    //个推依赖
+    compile 'io.reactivex.rxjava2:rxjava:2.1.1'
+    //rxjava
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    //rxjava
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    //retrofit
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+    //retrofit和Gson集合
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    //retrifit和rxjava
+    implementation 'com.facebook.fresco:fresco:1.5.0'
+    //fresco图片框架
+    compile 'com.makeramen:roundedimageview:2.3.0'
+    //圆形图片
+    compile 'com.github.zzz40500:ThemeDemo:0.1'
+    //日夜切换
+    compile 'com.github.zzz40500:CommonAdapter:1.0'
+    implementation project(':slidingmenu')
+}
