@@ -174,7 +174,7 @@ else {
     dlPager.openDrawer(flLeft);
     float x = flLeft.getRight();
     float x1 = dlPager.getRight();
-    System.out.println(x+"====right======"+x1);
+
 
 }
     }
