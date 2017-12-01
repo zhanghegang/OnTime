@@ -18,15 +18,16 @@ android:src="@drawable/welcom"
         android:layout_height="50dp"
         android:src="@drawable/logo"
         />
+
     <TextView
-       android:layout_marginBottom="20dp"
-     android:layout_centerHorizontal="true"
-    android:id="@+id/tv_wel"
+        android:id="@+id/tv_wel"
+        android:layout_width="@dimen/x250"
+        android:layout_height="@dimen/y70"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp"
         android:background="@drawable/wel"
         android:gravity="center"
         android:text="欢迎进入"
-        android:textColor="@color/reg_white"
-        android:layout_width="100dp"
-        android:layout_height="40dp" />
+        android:textColor="@color/reg_white" />
 </RelativeLayout>

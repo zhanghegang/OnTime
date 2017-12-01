@@ -17,4 +17,8 @@
     <color name="night_bg">#fcc</color>
     <color name="left_name_bg">#fff</color>
     <color name="menu_tv_bg">#000000</color>
+    <color name="thumb_normal">#cccccc</color>
+    <color name="thumb_select">#00ff00</color>
+    <color name="duanzi_name">#ff0000</color>
+    <color name="duanzi_time">#000000</color>
 </resources>

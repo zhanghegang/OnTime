@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import android.support.v7.app.AppCompatDelegate;
 import android.util.DisplayMetrics;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.igexin.sdk.PushManager;
 import com.igexin.sdk.PushReceiver;
 import com.mingle.skin.SkinConfig;
@@ -44,6 +45,7 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fresco.initialize(this);
 init(this);
         PushManager.getInstance().initialize(this.getApplicationContext(), DemoPushService.class);
         PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), DemoIntentService.class);

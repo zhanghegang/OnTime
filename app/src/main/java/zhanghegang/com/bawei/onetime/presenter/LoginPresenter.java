@@ -1,5 +1,7 @@
 package zhanghegang.com.bawei.onetime.presenter;
 
+import android.text.TextUtils;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,13 +28,28 @@ public class LoginPresenter extends BasePresenter<LoginView> {
 
     }
     public void login(String mobile,String password){
+
         Map<String,Object> map=new HashMap<>();
+        if(TextUtils.isEmpty(mobile))
+        {
+            mView.mobileError();
+            return;
+        }
+     if(TextUtils.isEmpty(password))
+     {
+         mView.passwordError();
+         return;
+     }
         map.put("mobile",mobile);
         map.put("password",password);
         loginModel.load(map, new LoginCallBack() {
             @Override
-            public void loadSucess(String data) {
-                mView.gainSucess(data);
+            public void loadSucess(Object data) {
+                if(data!=null)
+                {
+                    mView.gainSucess(data);
+                }
+
             }
 
             @Override

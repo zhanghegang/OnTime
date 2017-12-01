@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<zhanghegang.com.bawei.onetime.autoview.NoDrawLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,26 +8,24 @@ android:orientation="vertical"
    android:id="@+id/dl_pager"
     tools:context="zhanghegang.com.bawei.onetime.MainActivity">
 
-    <FrameLayout
+   <!-- <FrameLayout
         android:clickable="true"
         android:layout_gravity="start"
         android:id="@+id/fl_left"
         android:background="#f00"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></FrameLayout>
+-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <LinearLayout
             android:orientation="vertical"
+            android:layout_weight="1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-    <ScrollView
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp">
 <zhanghegang.com.bawei.onetime.autoview.UpdateTitleView
     android:id="@+id/update_title"
     android:layout_width="match_parent"
@@ -37,15 +35,19 @@ android:orientation="vertical"
 <FrameLayout
 
     android:id="@+id/fl_main"
-android:background="#ff0"
+android:layout_weight="1"
     android:layout_width="match_parent"
-    android:layout_height="1000dp"></FrameLayout>
+    android:layout_height="0dp">
+
+
+</FrameLayout>
         </LinearLayout>
-    </ScrollView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="55dp">
         <LinearLayout
+            android:background="?android:attr/selectableItemBackground"
             android:padding="3dp"
             android:gravity="center"
             android:id="@+id/ll_tuijian"
@@ -68,6 +70,7 @@ android:background="#ff0"
                 android:textSize="13sp" />
         </LinearLayout>
         <LinearLayout
+            android:background="?android:attr/selectableItemBackground"
             android:padding="3dp"
             android:gravity="center"
             android:id="@+id/ll_duanzi"
@@ -89,6 +92,7 @@ android:background="#ff0"
                 />
         </LinearLayout>
         <LinearLayout
+            android:background="?android:attr/selectableItemBackground"
             android:padding="3dp"
             android:gravity="center"
             android:id="@+id/ll_video"
@@ -111,6 +115,6 @@ android:background="#ff0"
         </LinearLayout>
     </LinearLayout>
         </LinearLayout>
-</zhanghegang.com.bawei.onetime.autoview.NoDrawLayout>
+</LinearLayout>
 
 

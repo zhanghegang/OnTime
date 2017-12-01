@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:clickable="true"
+<RelativeLayout xmlns:tools="http://schemas.android.com/tools"
+    android:clickable="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#fff"
     android:orientation="vertical"
@@ -22,13 +23,14 @@ android:padding="@dimen/x50"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <com.makeramen.roundedimageview.RoundedImageView
-        android:src="@drawable/start5"
+        android:src="@drawable/user_white"
         android:scaleType="centerCrop"
         app:riv_corner_radius="100dp"
         android:id="@+id/iv_left_head"
         android:layout_width="@dimen/x120"
         android:layout_height="@dimen/x120" />
     <TextView
+        android:id="@+id/tv_left_name"
         android:layout_marginLeft="@dimen/x50"
         android:text="姓名"
 
@@ -60,7 +62,9 @@ android:padding="@dimen/x50"
         />
 </LinearLayout>
     <LinearLayout
+        android:background="?android:attr/selectableItemBackground"
         android:id="@+id/ll_guanzhu"
+        android:colorControlHighlight="@color/main_head"
         android:padding="@dimen/x25"
         android:gravity="center_vertical"
         android:layout_width="match_parent"
@@ -88,6 +92,7 @@ android:padding="@dimen/x50"
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
+        android:background="?android:attr/selectableItemBackground"
         android:id="@+id/ll_shoucang"
         android:padding="@dimen/x25"
         android:gravity="center_vertical"
@@ -116,6 +121,7 @@ android:padding="@dimen/x50"
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
+        android:background="?android:attr/selectableItemBackground"
         android:id="@+id/ll_find"
         android:padding="@dimen/x25"
         android:gravity="center_vertical"
@@ -144,6 +150,7 @@ android:padding="@dimen/x50"
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
+        android:background="?android:attr/selectableItemBackground"
         android:id="@+id/ll_msg"
         android:padding="@dimen/x25"
         android:gravity="center_vertical"
@@ -178,6 +185,7 @@ android:padding="@dimen/x50"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <LinearLayout
+            android:background="?android:attr/selectableItemBackground"
             android:padding="@dimen/x30"
             android:gravity="center_vertical"
             android:layout_width="match_parent"
@@ -186,7 +194,7 @@ android:padding="@dimen/x50"
                 android:id="@+id/iv_night"
                 android:src="@drawable/night"
                 android:layout_width="@dimen/x50"
-                android:layout_height="@dimen/x50" />
+                android:layout_height="@dimen/y60" />
             <TextView
                 android:layout_marginLeft="@dimen/x30"
                 android:text="夜间模式"
@@ -198,6 +206,9 @@ android:padding="@dimen/x50"
                 android:gravity="right"
                 android:layout_height="match_parent">
                 <Switch
+                    android:background="?android:attr/selectableItemBackground"
+                    android:thumb="@drawable/switch_nomal"
+                    android:track="@drawable/switch_other"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/sw"
@@ -211,7 +222,7 @@ android:padding="@dimen/x50"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
-
+                android:background="?android:attr/selectableItemBackground"
                 android:id="@+id/ll_worker"
                android:gravity="center"
                 android:layout_weight="1"
@@ -230,7 +241,7 @@ android:padding="@dimen/x50"
                     />
             </LinearLayout>
             <LinearLayout
-
+                android:background="?android:attr/selectableItemBackground"
                 android:id="@+id/ll_setting"
 
                 android:orientation="vertical"
@@ -238,7 +249,8 @@ android:padding="@dimen/x50"
 
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                tools:ignore="NewApi">
                 <ImageView
                     android:layout_width="@dimen/x80"
                     android:layout_height="@dimen/y80"

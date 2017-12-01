@@ -8,22 +8,9 @@ package zhanghegang.com.bawei.onetime.bean;
  */
 
 public class RegBean extends BaseReg{
-    /**
-     * {
-     "h2y_app_id": "string",
-     "pd": {
-     "account": "13716792264",
-     "openid": "string",
-     "password": "102677",
-     "unionid": "string"
-     },
-     "token": "string"
-     }
-     */
-   public String account;
-   public String openid;
-   public String password;
-   public String unionid;
+
+   public String token;
+   public String uid;
 
 
 }

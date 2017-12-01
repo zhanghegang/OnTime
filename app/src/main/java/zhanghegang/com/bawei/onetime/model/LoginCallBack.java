@@ -8,6 +8,6 @@ package zhanghegang.com.bawei.onetime.model;
  */
 
 public interface LoginCallBack {
-    void loadSucess(String data);
+    void loadSucess(Object data);
     void loadFail(String msg);
 }

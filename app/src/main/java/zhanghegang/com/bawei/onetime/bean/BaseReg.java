@@ -8,7 +8,7 @@ package zhanghegang.com.bawei.onetime.bean;
  */
 
 public class BaseReg<T> {
-    public String h2y_app_id;
-    public T pd;
-    public String token;
+  public String msg;
+  public String code;
+  public T data;
 }

@@ -4,6 +4,7 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,8 @@ public class RegActivity extends BaseActivity {
     LinearLayout llWeichat;
     @BindView(R.id.tv_othreg)
     TextView tvOreg;
+    @BindView(R.id.iv_back_reg)
+    ImageView ivBackReg;
 
     @Override
     public BasePresenter initPresenter() {
@@ -51,7 +54,7 @@ public class RegActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.ll_qq, R.id.ll_weichat,R.id.tv_othreg})
+    @OnClick({R.id.ll_qq, R.id.ll_weichat, R.id.tv_othreg,R.id.iv_back_reg})
     public void onViewClicked(View view) {
         switch (view.getId()) {
 
@@ -62,7 +65,10 @@ public class RegActivity extends BaseActivity {
                 Toast.makeText(this, "wechat", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.tv_othreg:
-start(OtherRegActivity.class,false);
+                start(OtherRegActivity.class, false);
+                break;
+            case R.id.iv_back_reg:
+                finish();
                 break;
         }
     }

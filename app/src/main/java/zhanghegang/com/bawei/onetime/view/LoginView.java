@@ -10,7 +10,7 @@ import zhanghegang.com.bawei.onetime.base.BaseView;
  */
 
 public interface LoginView extends BaseView{
-    void gainSucess(String data);
+    void gainSucess(Object data);
     void mobileError();
     void passwordError();
 

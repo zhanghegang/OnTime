@@ -11,6 +11,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kson.slidingmenu.SlidingMenu;
+import com.tencent.bugly.crashreport.biz.UserInfoBean;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -18,12 +21,15 @@ import zhanghegang.com.bawei.onetime.autoview.NoDrawLayout;
 import zhanghegang.com.bawei.onetime.autoview.UpdateTitleView;
 import zhanghegang.com.bawei.onetime.base.BaseActivity;
 import zhanghegang.com.bawei.onetime.base.BasePresenter;
+import zhanghegang.com.bawei.onetime.bean.UserInfo;
 import zhanghegang.com.bawei.onetime.fragment.DuanziFragment;
 import zhanghegang.com.bawei.onetime.fragment.LeftFragment;
 import zhanghegang.com.bawei.onetime.fragment.TuijianFragment;
 import zhanghegang.com.bawei.onetime.fragment.VedioFragment;
+import zhanghegang.com.bawei.onetime.presenter.GetUserInfoPresenter;
+import zhanghegang.com.bawei.onetime.view.GetUserInfoView;
 
-public class MainActivity extends BaseActivity implements UpdateTitleView.OnClickImage {
+public class MainActivity extends BaseActivity<GetUserInfoPresenter> implements UpdateTitleView.OnClickImage, GetUserInfoView {
 
 
     @BindView(R.id.update_title)
@@ -48,15 +54,18 @@ public class MainActivity extends BaseActivity implements UpdateTitleView.OnClic
     ImageView ivDuanzi;
     @BindView(R.id.iv_vedio)
     ImageView ivVedio;
-    @BindView(R.id.fl_left)
-    FrameLayout flLeft;
-    @BindView(R.id.dl_pager)
-    NoDrawLayout dlPager;
+//    @BindView(R.id.fl_left)
+//    FrameLayout flLeft;
+//    @BindView(R.id.dl_pager)
+//    NoDrawLayout dlPager;
+    private SlidingMenu slidingMenu;
+    private GetUserInfoPresenter getUserInfoPresenter;
 
 
     @Override
-    public BasePresenter initPresenter() {
-        return null;
+    public GetUserInfoPresenter initPresenter() {
+        getUserInfoPresenter = new GetUserInfoPresenter(this,this);
+        return getUserInfoPresenter;
     }
 
     @Override
@@ -92,10 +101,27 @@ public class MainActivity extends BaseActivity implements UpdateTitleView.OnClic
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+presenter.getUserInfo();
+    }
 
     private void setLeft() {
+        slidingMenu = new SlidingMenu(this);
+        slidingMenu.setMenu(R.layout.left_sliding);
+
        LeftFragment leftFragment= new LeftFragment();
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_left,leftFragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_slding_left,leftFragment).commit();
+
+        slidingMenu.setMode(SlidingMenu.LEFT);
+        //设置边缘滑动
+        slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
+        //设置滑动后主布局剩余宽度
+        slidingMenu.setBehindOffsetRes(R.dimen.margin);
+        slidingMenu.setBehindScrollScale(0);
+
+        slidingMenu.attachToActivity(this,SlidingMenu.SLIDING_CONTENT);
 
     }
 
@@ -165,25 +191,59 @@ public class MainActivity extends BaseActivity implements UpdateTitleView.OnClic
 
     @Override
     public void userHeadImage() {
+        if(slidingMenu!=null)
+        {
+        if(slidingMenu.isMenuShowing())
+        {
+            slidingMenu.toggle();
+        }
+        else {
+            slidingMenu.showMenu();
+        }
+        }
 
-if(dlPager.isDrawerOpen(flLeft))
+/*if(dlPager.isDrawerOpen(flLeft))
 {
     dlPager.closeDrawer(flLeft);
 }
 else {
     dlPager.openDrawer(flLeft);
-    float x = flLeft.getRight();
-    float x1 = dlPager.getRight();
-
-
-}
+}*/
     }
 
     @Override
     public void writerImage() {
-
+start(WriterStatinActivity.class,false);
     }
 
 
+    @Override
+    public void showLoading() {
 
+    }
+
+    @Override
+    public void hidLoading() {
+
+    }
+
+    @Override
+    public void failure(String msg) {
+showToast(msg);
+    }
+
+    @Override
+    public void getUserInfoSuc(Object data) {
+
+//        String code = ((UserInfo) data).getCode();
+//        System.out.println("code======"+code);
+//        if("2".equals(code))
+//        {
+//            start(RegActivity.class,true);
+//            return;
+//        }
+        UserInfo.DataBean userInfo = ((UserInfo) data).getData();
+        String icon = userInfo.getIcon();
+        updateTitle.setheadImage(this,icon);
+    }
 }

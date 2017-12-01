@@ -29,7 +29,7 @@
 
     <permission
         android:name="getui.permission.GetuiService.${applicationId}"
-        android:protectionLevel="normal"></permission>
+        android:protectionLevel="normal" />
 
     <application
         android:name=".MyApp"
@@ -62,16 +62,24 @@
             android:name="BUGLY_ENABLE_DEBUG"
             android:value="true" />
 
-        <activity android:name=".MainActivity" />
-        <activity android:name=".StartSActivity">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".StartSActivity"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegActivity" />
-        <activity android:name=".LeadActivity" />
+        <activity
+            android:name=".RegActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".LeadActivity"
+            android:theme="@style/AppTheme" />
 
         <receiver
             android:name=".GeTuiReceiver"
@@ -129,7 +137,7 @@
             android:exported="false"
             android:process=":pushservice"
             android:taskAffinity="com.igexin.sdk.PushActivityTask"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.igexin.sdk.GActivity"
             android:excludeFromRecents="true"
@@ -137,9 +145,19 @@
             android:process=":pushservice"
             android:taskAffinity="com.igexin.sdk.PushActivityTask"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".OtherRegActivity"
-            android:theme="@style/OtherActivity"
-            ></activity>
+        <activity
+            android:name=".OtherRegActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".WriterStatinActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".StatinContentActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="me.nereo.multi_image_selector.MultiImageSelectorActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity android:name=".ReginPhoneActivity"  android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

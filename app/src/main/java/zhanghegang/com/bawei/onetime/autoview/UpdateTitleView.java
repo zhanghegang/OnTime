@@ -1,6 +1,7 @@
 package zhanghegang.com.bawei.onetime.autoview;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
+import com.bumptech.glide.Glide;
 import com.makeramen.roundedimageview.RoundedImageView;
 
 
@@ -36,9 +38,10 @@ public class UpdateTitleView extends RelativeLayout {
 //    private RoundedImageView roundedImageView;
 //    private TextView tv_title;
 //    private ImageView iv_writer;
-
+private Context context;
     public UpdateTitleView(Context context) {
         this(context, null);
+        this.context=context;
     }
 
     public UpdateTitleView(Context context, AttributeSet attrs) {
@@ -66,6 +69,12 @@ public void setTitle(String title){
             case R.id.iv_main_writer:
                 onClickImage.writerImage();
                 break;
+        }
+    }
+    public void setheadImage(Context context,String url){
+        if(!TextUtils.isEmpty(url))
+        {
+            Glide.with(context).load(url).into(mainUserHead);
         }
     }
     public void setOnClickImage(OnClickImage onClickImage){

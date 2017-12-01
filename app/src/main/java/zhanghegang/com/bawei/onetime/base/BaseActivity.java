@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
@@ -33,6 +34,8 @@ public abstract class BaseActivity<V extends BasePresenter> extends AppCompatAct
     //获得初始化布局
     public abstract void initView();
     public abstract void ionDestroy();
+    //提供onResum方法
+    public void mOnResum(){}
 
     /**
      * 设置状态栏是否显示
@@ -82,6 +85,8 @@ public void setActionBar(){
 
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
         ButterKnife.bind(this);
        presenter= initPresenter();
 
@@ -139,5 +144,10 @@ public void start(Class<?> tclass,boolean isFinish){
             presenter.deatch();
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }

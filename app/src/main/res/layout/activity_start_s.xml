@@ -39,7 +39,7 @@
 </LinearLayout>
     <LinearLayout
         android:id="@+id/ll_reg"
-        android:visibility="gone"
+android:visibility="gone"
         android:padding="10dp"
         android:gravity="center"
         android:layout_alignParentBottom="true"
@@ -52,8 +52,8 @@
             android:onClick="regin"
             android:textSize="12sp"
             android:textColor="@color/reg_white"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/x220"
+            android:layout_height="@dimen/y70"
             android:background="@drawable/reg"
             android:id="@+id/btn_reg"
             />
@@ -62,8 +62,8 @@
             android:onClick="reginWalker"
             android:textSize="12sp"
             android:textColor="@color/reg_white"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/x220"
+            android:layout_height="@dimen/y70"
             android:background="@drawable/regwalker"
             android:id="@+id/btn_regwalker"
             />
